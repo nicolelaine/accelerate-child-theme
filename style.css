@@ -10,6 +10,7 @@ Tags:     	light, dark, two-columns, right-sidebar, responsive-layout, accessibi
 Text Domain:  accelerate-theme-child
 */
 
+
 .home-page {
     background: url("img/taxi-photo.jpg") no-repeat scroll right center / cover rgba(0, 0, 0, 0);
 }
@@ -23,14 +24,14 @@ Text Domain:  accelerate-theme-child
 }
 
 .blog-post {
-	width: 50%;
-	float: left;
-	margin-bottom: 2em;
+	width: auto;       /* let flex control width */
+    margin-bottom: 2em;
+    float: none !important;  /* remove any leftover floats */
 }
 
 .blog-post h4 {
     font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
-    color: #a6a6a6;
+    color: #45ac9d;
     text-transform: uppercase;
     margin: 2em 0 .5em;
 }
@@ -365,3 +366,50 @@ div.case-study-images img {
 .about-cta .btn:hover {
   background: #159d82;
 }
+
+/* Flex container for blog + calendar */
+.recent-flex-container {
+    display: flex !important;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Blog takes 2/3 */
+.recent-flex-container .blog-post {
+    flex: 2 1 0;
+    max-width: 66%;
+    float: none !important; /* remove old floats */
+    box-sizing: border-box;
+}
+
+/* Calendar sidebar takes 1/3 */
+.recent-flex-container .calendar-sidebar {
+    flex: 1 1 0;
+    max-width: 33%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.calendar-sidebar h4 {
+    font: 700 1em/1.75 'Montserrat', 'Open Sans', Arial, sans-serif;
+    color: #45ac9d;
+    text-transform: uppercase;
+    margin: 1em 0 .5em;
+    padding: 0 0 2em 0;
+}
+
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+    .recent-flex-container {
+        flex-direction: column !important;
+    }
+    .recent-flex-container .blog-post,
+    .recent-flex-container .calendar-sidebar {
+        max-width: 100%;
+    }
+    .recent-flex-container .calendar-sidebar {
+        margin-top: 2rem;
+    }
+}
+

@@ -28,6 +28,8 @@ get_header(); ?>
 		</div><!-- .main-content -->
 	</div><!-- #primary -->
 
+
+
   <section class="featured-work">
       <div class="site-content">
         <h4>Featured Work</h4>
@@ -52,21 +54,27 @@ get_header(); ?>
 
    </section>
 
-	<!-- RECENT BLOG POST -->
-		<section class="recent-posts">
-            <div class="site-content">
-  <div class="blog-post">
-   <h4>From the Blog</h4>
-    <?php query_posts('posts_per_page=1'); ?>
-     <?php while ( have_posts() ) : the_post(); ?>
-      <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-       <?php the_excerpt(); ?> 
+<section class="recent-posts">
+  <div class="site-content recent-flex-container">
+    <div class="blog-post">
+      <h4>From the Blog</h4>
+      <?php query_posts('posts_per_page=1'); while (have_posts()) : the_post(); ?>
+        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+        <?php the_excerpt(); ?>
         <a class="view-project-link" href="<?php the_permalink(); ?>"><strong>Read More ></strong></a>
-     <?php endwhile; ?> 
-    <?php wp_reset_query(); ?>
-   </div>
- </div>
+      <?php endwhile; wp_reset_query(); ?>
+    </div>
+
+    <aside class="calendar-sidebar">
+      <h4>Our Calendar</h4>
+      <?php dynamic_sidebar('sidebar-2'); ?>
+    </aside>
+  </div>
 </section>
-		
-	
+
+
+
+
+ </div><!-- #primary -->
+   
 <?php get_footer(); ?>
